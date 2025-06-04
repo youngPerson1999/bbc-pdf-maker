@@ -9,14 +9,18 @@ interface ArticleTabProps {
 }
 const ArticleTab = ({ article, onSelect, isSelected }: ArticleTabProps) => {
   return (
-    <div
-      className="p-4 border-b border-gray-200 hover:bg-gray-50/20 transition-colors cursor-pointer"
-      onClick={() => onSelect(article)}
-    >
-      <h2 className="text-lg font-semibold">{article.title}</h2>
-      <p className="text-sm text-gray-400">{article.description}</p>
+    <div className="border-b border-gray-200 ">
+      <div
+        className="p-4 hover:bg-gray-50/20 transition-colors cursor-pointer"
+        onClick={() => onSelect(article)}
+      >
+        <h2 className="text-lg font-semibold">{article.title}</h2>
+        <p className="text-sm text-gray-400">{article.description}</p>
+      </div>
       <AnimatePresence>
-        {isSelected && <ArticleDetail close={() => onSelect(article)} />}
+        {isSelected && (
+          <ArticleDetail href={article.href} close={() => onSelect(article)} />
+        )}
       </AnimatePresence>
     </div>
   );

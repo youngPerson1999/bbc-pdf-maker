@@ -9,3 +9,9 @@ export interface ArticleInfo {
   image?: string;
   href: string;
 }
+
+export interface ArticleContent {
+  headline: string;
+  time: string;
+  content: { isBold: boolean; text: string }[];
+}

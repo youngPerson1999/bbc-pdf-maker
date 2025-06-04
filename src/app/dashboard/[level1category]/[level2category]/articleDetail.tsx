@@ -1,10 +1,15 @@
+import { useArticleContent } from "@/lib/api";
 import { motion } from "motion/react";
+import ArticleTextContent from "./articleTextContent";
 
 interface ArticleDetailProps {
+  href: string;
   close: () => void;
 }
 
-const ArticleDetail = ({ close }: ArticleDetailProps) => {
+const ArticleDetail = ({ href, close }: ArticleDetailProps) => {
+  const { data: articleContent, isLoading } = useArticleContent(href);
+
   return (
     <motion.div
       initial={{ height: 0, opacity: 0 }}
@@ -12,10 +17,14 @@ const ArticleDetail = ({ close }: ArticleDetailProps) => {
       exit={{ height: 0, opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="flex flex-col p-4 w-full">
-        <h1>Detail Article</h1>
-        <p>This is the detail view of an article.</p>
-      </div>
+      {isLoading && <p className="p-4">Loading...</p>}
+      {articleContent && (
+        <div className="flex flex-col p-4 w-full">
+          <h1 className="text-2xl font-bold">{articleContent.headline}</h1>
+          <p className="text-right">{articleContent.time}</p>
+          <ArticleTextContent content={articleContent.content} />
+        </div>
+      )}
       <button
         onClick={(e) => {
           e.stopPropagation();
