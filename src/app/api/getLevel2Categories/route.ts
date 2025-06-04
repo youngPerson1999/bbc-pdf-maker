@@ -2,9 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
 import { Level2Category } from "@/lib/types";
 import { extractLevel2Categories } from "@/lib/util";
-
-// BBC 뉴스 메인 URL (크롤링용)
-const BBC_URL = "https://www.bbc.com";
+import { BBC_URL } from "@/lib/constants";
 
 /**
  * GET /api/getLevel2Categories?category=news

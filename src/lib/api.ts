@@ -16,5 +16,6 @@ export const useLevel2Categories = (category: string) =>
   useQuery<Level2Category[]>({
     queryKey: ["level2Categories", category],
     queryFn: () => fetchLevel2Categories(category),
-    staleTime: 5 * 60 * 1000, // 선택적으로 추가
+    staleTime: 5 * 60 * 1000, // 선택적으로 추가,
+    enabled: !!category && category.length > 0, // category가 있을 때만 쿼리 실행
   });

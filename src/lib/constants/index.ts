@@ -4,3 +4,5 @@ export const level1Categories: string[] = [
   "innovation",
   "earth",
 ];
+
+export const BBC_URL = "https://www.bbc.com";
