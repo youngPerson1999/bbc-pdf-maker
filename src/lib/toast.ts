@@ -18,7 +18,7 @@ export const defaultToastOptions: ToastOptions = {
 
 type ToastType = 'success' | 'error' | 'info' | 'warning' | 'default';
 
-interface ToastOptions {
+interface ToastProps {
   type?: ToastType;
   message?: string;
   options?: Partial<ToastOptions>;
@@ -36,7 +36,7 @@ export const showToast = ({
   type = 'success',
   message,
   options,
-}: ToastOptions): Id => {
+}: ToastProps): Id => {
   const optionsToApply = { ...defaultToastOptions, ...options };
 
   switch (type) {
