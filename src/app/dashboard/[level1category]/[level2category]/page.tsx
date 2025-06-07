@@ -3,19 +3,19 @@ import { useArticlesInfo } from '@/lib/api';
 import { useParams } from 'next/navigation';
 import ArticleTab from './articleTab';
 import { useState } from 'react';
-import { ArticleInfo } from '@/lib/types';
+import { ArticleInfoDto } from '@/api/generated/schemas';
 
 const ArticlesPage = () => {
   const { level1category, level2category } = useParams<{
     level1category: string;
     level2category: string;
   }>();
-  const [selectedArticle, setSelectedArticle] = useState<ArticleInfo>();
+  const [selectedArticle, setSelectedArticle] = useState<ArticleInfoDto>();
   const { data, isLoading, error } = useArticlesInfo(
     level1category,
     level2category,
   );
-  const handleArticleClick = (article: ArticleInfo) => {
+  const handleArticleClick = (article: ArticleInfoDto) => {
     if (!selectedArticle || selectedArticle.title !== article.title) {
       setSelectedArticle(article);
     } else {

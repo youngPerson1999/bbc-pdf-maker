@@ -5,12 +5,12 @@
  * BBC News Api Description
  * OpenAPI spec version: 0.0.0
  */
-import type { Article } from './article';
-import type { ArticleInfo } from './articleInfo';
+import type { ArticleDto } from './articleDto';
+import type { ArticleInfoDto } from './articleInfoDto';
 
 export interface ScrapDto {
   /** Article object */
-  article: Article;
+  article: ArticleDto;
   /** ArticleInfo object */
-  articleInfo: ArticleInfo;
+  articleInfo: ArticleInfoDto;
 }

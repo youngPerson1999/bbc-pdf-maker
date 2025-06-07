@@ -6,6 +6,6 @@
  * OpenAPI spec version: 0.0.0
  */
 
-export interface Article {
-  [key: string]: unknown;
-}
+export type GetLevel2CategoriesParams = {
+  category: string;
+};

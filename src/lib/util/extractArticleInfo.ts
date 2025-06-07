@@ -1,12 +1,12 @@
-import * as cheerio from "cheerio";
-import { ArticleInfo } from "../types";
-const extractArticleInfo = (html: string): ArticleInfo[] => {
+import { ArticleInfoDto } from '@/api/generated/schemas';
+import * as cheerio from 'cheerio';
+const extractArticleInfo = (html: string): ArticleInfoDto[] => {
   const $ = cheerio.load(html);
-  const result: ArticleInfo[] = [];
+  const result: ArticleInfoDto[] = [];
 
   const section = $('section[data-testid="alaska-section-outer"]');
   if (!section.length) {
-    console.warn("No Latest updates section found");
+    console.warn('No Latest updates section found');
     return result;
   }
 
@@ -44,7 +44,7 @@ const extractArticleInfo = (html: string): ArticleInfo[] => {
     //   }
     // }
 
-    const href = card.find('a[data-testid="internal-link"]').attr("href") || "";
+    const href = card.find('a[data-testid="internal-link"]').attr('href') || '';
 
     if (title && href) {
       result.push({

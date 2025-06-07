@@ -6,6 +6,9 @@
  * OpenAPI spec version: 0.0.0
  */
 
-export type Level2CategoryControllerGetLevel2CategoriesParams = {
-  category: string;
-};
+export interface ArticleContentDto {
+  /** Whether the text is bold */
+  isBold: boolean;
+  /** The text content */
+  text: string;
+}

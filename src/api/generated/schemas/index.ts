@@ -6,8 +6,9 @@
  * OpenAPI spec version: 0.0.0
  */
 
-export * from './article';
-export * from './articleInfo';
-export * from './level2CategoryControllerGetLevel2CategoriesParams';
+export * from './articleContentDto';
+export * from './articleDto';
+export * from './articleInfoDto';
+export * from './getLevel2CategoriesParams';
 export * from './scrapDelReq';
 export * from './scrapDto';

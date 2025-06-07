@@ -1,10 +1,10 @@
-import { ArticleInfo } from '@/lib/types';
 import { AnimatePresence } from 'motion/react';
 import ArticleDetail from './articleDetail';
+import { ArticleInfoDto } from '@/api/generated/schemas';
 
 interface ArticleTabProps {
-  article: ArticleInfo;
-  onSelect: (article: ArticleInfo) => void;
+  article: ArticleInfoDto;
+  onSelect: (article: ArticleInfoDto) => void;
   isSelected: boolean;
 }
 const ArticleTab = ({ article, onSelect, isSelected }: ArticleTabProps) => {
@@ -19,7 +19,10 @@ const ArticleTab = ({ article, onSelect, isSelected }: ArticleTabProps) => {
       </div>
       <AnimatePresence>
         {isSelected && (
-          <ArticleDetail href={article.href} close={() => onSelect(article)} />
+          <ArticleDetail
+            articleInfo={article}
+            close={() => onSelect(article)}
+          />
         )}
       </AnimatePresence>
     </div>
