@@ -4,6 +4,7 @@ import ArticleTextContent from './articleTextContent';
 import ArticleFooter from './articleFooter';
 import { scrapPost, useScrapPost } from '@/api/generated/scrap';
 import { ArticleInfoDto } from '@/api/generated/schemas';
+import { showToast } from '@/lib/toast';
 
 interface ArticleDetailProps {
   articleInfo: ArticleInfoDto;
@@ -22,12 +23,22 @@ const ArticleDetail = ({ articleInfo, close }: ArticleDetailProps) => {
     }
     try {
       console.log('Saving article:', articleContent, articleInfo);
-      await onScrapPost.mutateAsync({
-        data: {
-          article: articleContent,
-          articleInfo,
-        },
-      });
+      await onScrapPost
+        .mutateAsync({
+          data: {
+            article: articleContent,
+            articleInfo,
+          },
+        })
+        .then(() => {
+          showToast({
+            type: 'success',
+            message: 'Article saved successfully!',
+          });
+        })
+        .catch((error) => {
+          console.error('Error saving article:', error);
+        });
     } catch (error) {
       console.error('Error saving article:', error);
     }
