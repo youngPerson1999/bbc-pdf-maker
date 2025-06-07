@@ -1,6 +1,7 @@
 import { useArticleContent } from "@/lib/api";
 import { motion } from "motion/react";
 import ArticleTextContent from "./articleTextContent";
+import ArticleFooter from "./articleFooter";
 
 interface ArticleDetailProps {
   href: string;
@@ -26,15 +27,7 @@ const ArticleDetail = ({ href, close }: ArticleDetailProps) => {
           <ArticleTextContent content={articleContent.content} />
         </div>
       )}
-      <button
-        className="cursor-pointer mt-4 px-4 py-2 bg-gray-200/20 rounded hover:bg-gray-300/20 transition-colors"
-        onClick={(e) => {
-          e.stopPropagation();
-          close();
-        }}
-      >
-        close
-      </button>
+      <ArticleFooter close={close} save={() => {}} />
     </motion.div>
   );
 };

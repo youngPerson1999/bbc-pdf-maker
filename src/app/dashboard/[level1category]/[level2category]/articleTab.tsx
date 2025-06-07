@@ -1,6 +1,6 @@
-import { ArticleInfo } from "@/lib/types";
-import ArticleDetail from "./articleDetail";
-import { AnimatePresence } from "motion/react";
+import { ArticleInfo } from '@/lib/types';
+import { AnimatePresence } from 'motion/react';
+import ArticleDetail from './articleDetail';
 
 interface ArticleTabProps {
   article: ArticleInfo;

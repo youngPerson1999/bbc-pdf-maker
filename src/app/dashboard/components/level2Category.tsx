@@ -1,4 +1,4 @@
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
 interface Level2CategoryProps {
   name: string;
@@ -8,7 +8,7 @@ interface Level2CategoryProps {
 const Level2Category = ({ name, href }: Level2CategoryProps) => {
   const router = useRouter();
   const handleClick = () => {
-    const parts = href.split("/").filter(Boolean); // ['', 'news', 'war-in-ukraine'] → ['news', 'war-in-ukraine']
+    const parts = href.split('/').filter(Boolean); // ['', 'news', 'war-in-ukraine'] → ['news', 'war-in-ukraine']
     if (parts.length >= 2) {
       const [level1, level2] = parts.slice(-2); // ['news', 'war-in-ukraine']
       router.push(`/dashboard/${level1}/${level2}`);

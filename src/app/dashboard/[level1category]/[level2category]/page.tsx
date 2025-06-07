@@ -1,9 +1,9 @@
-"use client";
-import { useArticlesInfo } from "@/lib/api";
-import { useParams } from "next/navigation";
-import ArticleTab from "./articleTab";
-import { useState } from "react";
-import { ArticleInfo } from "@/lib/types";
+'use client';
+import { useArticlesInfo } from '@/lib/api';
+import { useParams } from 'next/navigation';
+import ArticleTab from './articleTab';
+import { useState } from 'react';
+import { ArticleInfo } from '@/lib/types';
 
 const ArticlesPage = () => {
   const { level1category, level2category } = useParams<{
@@ -13,7 +13,7 @@ const ArticlesPage = () => {
   const [selectedArticle, setSelectedArticle] = useState<ArticleInfo>();
   const { data, isLoading, error } = useArticlesInfo(
     level1category,
-    level2category
+    level2category,
   );
   const handleArticleClick = (article: ArticleInfo) => {
     if (!selectedArticle || selectedArticle.title !== article.title) {
